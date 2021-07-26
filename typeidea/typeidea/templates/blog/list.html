@@ -5,10 +5,37 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>TEST LIST</title>
 </head>
 <body>
-    <h1>List</h1>
-    <p>{{ name }}</p>
+<div>
+    {% for cate in navs %}
+        <a href="/category/{{ cate.id }}/">{{ cate.name }}</a>
+    {% endfor %}
+</div>
+
+{% if tag %}
+    tag: {{ tag.name }}
+{% endif %}
+
+
+<ul>
+    {% for post in post_list %}
+        <li>
+            <a href="/post/{{ post.id }}/">{{ post.title }}</a>
+            <div>
+                <p>author: {{ post.owner.username }}</p>
+                <p>category: {{ post.category.name }}</p>
+            </div>
+            <p>{{ post.desc }}</p>
+        </li>
+    {% endfor %}
+</ul>
+
+<div>
+    {% for cate in categories %}
+        <a href="/category/{{ cate.id }}/">{{ cate.name }}</a>
+    {% endfor %}
+</div>
 </body>
 </html>
