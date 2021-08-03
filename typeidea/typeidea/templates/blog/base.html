@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-Hans-cmn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}Index{% endblock %} Type Idea</title>
+</head>
+<body>
+<div>
+    <h1>TOP AREA</h1>
+    {% for cate in navs %}
+        <a href="/category/{{ cate.id }}/">{{ cate.name }}</a>
+    {% endfor %}
+</div>
+
+{% block main %}
+{% endblock %}
+
+
+
+<div>
+    <h1>Bottom Area</h1>
+    {% for cate in categories %}
+        <a href="/category/{{ cate.id }}/">{{ cate.name }}</a>
+    {% endfor %}
+</div>
+
+<div>
+    <h1>Sidebar Area</h1>
+    {% for sidebar in sidebars %}
+        <h4>{{ sidebar.title }}</h4>
+        <span>{{ sidebar.content_html }}</span>
+    {% endfor %}
+</div>
+</body>
+</html>

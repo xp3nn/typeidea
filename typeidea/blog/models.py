@@ -84,8 +84,9 @@ class Post(models.Model):
     owner = models.ForeignKey(User, verbose_name="作者", on_delete=models.DO_NOTHING)
     created_time = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")
 
-    # pv = models.PositiveIntegerField(default=1)
-    # uv = models.PositiveIntegerField(default=1)
+    pv = models.PositiveIntegerField(default=1)
+    uv = models.PositiveIntegerField(default=1)
+
     class Meta:
         verbose_name = verbose_name_plural = "文章"
         ordering = ['-id']
@@ -120,5 +121,7 @@ class Post(models.Model):
         queryset = cls.objects.filter(status=cls.STATUS_NORMAL)
         return queryset
 
-
+    @classmethod
+    def hot_posts(cls):
+        return cls.objects.filter(status=cls.STATUS_NORMAL).order_by('-pv')
 
